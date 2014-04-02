@@ -1,2 +1,20 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
+from __future__ import unicode_literals
+
+from tg import config
+
+
+def get_new_product_form():
+    stroller2_config = config['_pluggable_stroller2_config']
+
+    new_product_form = stroller2_config.get('new_product_form_instance')
+    if not new_product_form:
+        form_path = stroller2_config.get('stroller2.new_product_form',
+                                         'stroller2.lib.forms.NewProductForm')
+        module, form_name = form_path.rsplit('.', 1)
+        module = __import__(module, fromlist=form_name)
+        form_class = getattr(module, form_name)
+        new_product_form = stroller2_config['new_product_form_instance'] = form_class()
+
+    return new_product_form
 
