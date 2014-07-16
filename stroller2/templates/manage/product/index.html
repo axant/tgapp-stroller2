@@ -1,9 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
 
+<xi:include href="master.html" />
+
+<head>
+    <title>Shop Management - Product</title>
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-offset-4 col-md-8">
+        <hr/>
+        <table class="table table-bordered">
+            <tr>
+                <th>Prodotto</th>
+                <th class="edit-header">Azioni</th>
+            </tr>
+            <py:for each="product in products">
+                <tr>
+                    <td class="parent-entity"><a href="${h.product_url(product)}">${product.name['it']}</a></td>
+                    <td class="edit-field parent-entity">
+                        <ul>
+                            <li><a href="${tg.url('/manage/product/edit',
+                                 params=dict(product_id=product._id))}" title="Modifica Prodotto">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a></li>
+                            <li><a href="${tg.url('/manage/product/delete',
+                                 params=dict(product_id=product._id))}"
+                                   onclick="return confirm('Procedere alla cancellazione?')" title="Elimina Prodotto">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a></li>
+                            <li py:if="product.published"><a href="${tg.url('/manage/product/publish',
+                                 params=dict(product_id=product._id))}" title="Nascondi Prodotto">
+                                <span class="text-success glyphicon glyphicon-check"></span>
+                            </a></li>
+                            <li py:if="not product.published"><a href="${tg.url('/manage/product/publish',
+                                 params=dict(product_id=product._id))}" title="Pubblica Prodotto">
+                                <span class="text-error glyphicon glyphicon-check"></span>
+                            </a></li>
+                            <li><a href="${tg.url('/manage/product/new_configuration',
+                                 params=dict(product_id=product._id))}" title="Nuova Referenza">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a></li>
+                            <li><a href="${tg.url('/manage/product/related_products',
+                                 params=dict(product_id=product._id))}" title="Prodotti/Articoli correlati">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                            </a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </py:for>
+        </table>
+    </div>
+</div>
 </body>
 </html>

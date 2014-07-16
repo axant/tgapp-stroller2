@@ -6,7 +6,7 @@ stroller2 is a Pluggable application for TurboGears2.
 Installing
 -------------------------------
 
-stroller2 can be installed both from pypi or from bitbucket::
+stroller2 can be installed both from pypi or from github (still not released)::
 
     pip install stroller2
 
@@ -24,7 +24,7 @@ Then at the *end of the file* call plug with stroller2::
     plug(base_config, 'stroller2')
 
 You will be able to access the plugged application at
-*http://localhost:8080/stroller2*.
+*http://localhost:8080/commerce*.
 
 Available Hooks
 ----------------------

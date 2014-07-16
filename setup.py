@@ -9,10 +9,12 @@ except ImportError:
     from setuptools import setup, find_packages
 
 install_requires=[
-    "TurboGears2 >= 2.1.4",
+    "TurboGears2 >= 2.3.3",
     "tgext.pluggable",
     "tw2.core",
-    "tw2.forms"
+    "tw2.forms",
+    "tgext.ecommerce",
+    "axf"
 ]
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -38,5 +40,8 @@ setup(
                                  'public/*/*']},
     entry_points="""
     """,
-    zip_safe=False
+    zip_safe=False,
+    dependency_links=[
+        "https://github.com/axant/tgext.ecommerce/archive/master.zip#egg=tgext.ecommerce",
+    ],
 )

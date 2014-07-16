@@ -4,6 +4,6 @@ import tg
 
 
 def plugme(app_config, options):
-    tg.config['_pluggable_stroller2_config'] = options
+    app_config['_pluggable_stroller2_config'] = options
 
-    return dict(appid='commerce', global_helpers=False)
+    return dict(appid='commerce', global_helpers=True)

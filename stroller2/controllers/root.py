@@ -11,5 +11,4 @@ class RootController(TGController):
 
     @expose('stroller2.templates.index')
     def index(self):
-        print ' lol'
         return dict()
