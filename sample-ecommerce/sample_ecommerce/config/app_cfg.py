@@ -21,10 +21,11 @@ base_config.disable_request_extensions = False
 
 # Set None to disable escaping punctuation characters to "_" when dispatching methods.
 # Set to a function to provide custom escaping.
-base_config.dispatch_path_translator = True 
+base_config.dispatch_path_translator = True
 base_config.prefer_toscawidgets2 = True
 
 base_config.package = sample_ecommerce
+base_config.i18n_enabled = True
 
 #Enable json in expose
 base_config.renderers.append('json')
@@ -105,8 +106,7 @@ except ImportError:
     pass
 
 from tgext.pluggable import plug
-plug(base_config, 'tgext.ecommerce', edit_order_form='sample_ecommerce.config.ecommerce_hooks.EditOrderForm')
 plug(base_config, 'stroller2')
-
+plug(base_config, 'tgext.ecommerce', edit_order_form='sample_ecommerce.config.ecommerce_hooks.EditOrderForm')
 
 
