@@ -1,0 +1,708 @@
+# English translations for sample-ecommerce.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the sample-ecommerce
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sample-ecommerce 0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2014-07-17 15:32+0200\n"
+"PO-Revision-Date: 2014-07-17 15:34+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: sample_ecommerce/config/ecommerce_hooks.py:14
+msgid "Dati Spedizione"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:18
+msgid "Destinatario"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:20
+#: sample_ecommerce/config/ecommerce_hooks.py:45
+msgid "Indirizzo"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:22
+#: sample_ecommerce/config/ecommerce_hooks.py:46
+msgid "Città"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:24
+#: sample_ecommerce/config/ecommerce_hooks.py:47
+msgid "Provincia"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:26
+#: sample_ecommerce/config/ecommerce_hooks.py:48
+msgid "CAP"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:27
+#: sample_ecommerce/config/ecommerce_hooks.py:28
+#: sample_ecommerce/config/ecommerce_hooks.py:49
+#: sample_ecommerce/config/ecommerce_hooks.py:50
+msgid "Stato"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:35
+msgid "Email"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:36
+msgid "Telefono"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:39
+msgid "Dati Fatturazione"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:42
+msgid "Ragione Sociale"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:43
+msgid "Partita IVA"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:44
+msgid "Codice Fiscale"
+msgstr ""
+
+#: sample_ecommerce/config/ecommerce_hooks.py:51
+msgid "Salva"
+msgstr ""
+
+#: sample_ecommerce/controllers/root.py:62
+msgid "Only for managers"
+msgstr ""
+
+#: sample_ecommerce/controllers/root.py:68
+msgid "Only for the editor"
+msgstr ""
+
+#: sample_ecommerce/controllers/root.py:78
+msgid "Wrong credentials"
+msgstr ""
+
+#: sample_ecommerce/controllers/root.py:94
+#, python-format
+msgid "Welcome back, %s!"
+msgstr ""
+
+#: sample_ecommerce/controllers/root.py:107
+msgid "We hope to see you soon!"
+msgstr ""
+
+#: sample_ecommerce/controllers/secure.py:16
+msgid "Only for people with the \"manage\" permission"
+msgstr ""
+
+#: sample_ecommerce/controllers/secure.py:21
+msgid "Secure Controller here"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:8
+#: sample_ecommerce/templates/data.html:8
+msgid "Learning TurboGears 2.3: Quick guide to the Quickstart pages."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:15
+msgid "Architectural basics of a quickstart TG2 site."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:18
+msgid ""
+"The TG2 quickstart command produces this basic TG site. Here's how it "
+"works."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:26
+msgid "About Architecture"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:27
+msgid "Data Model"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:28
+msgid "URL Structure"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:29
+msgid "Templates"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:30
+msgid "Authentication"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:31
+msgid "Authorization and Authentication"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:36
+msgid "Code my data model"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:38
+msgid "When you want a model for storing favorite links or wiki content, the"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:39
+msgid "/model"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:39
+msgid "folder in your site is ready to go."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:41
+msgid ""
+"You can build a dynamic site without any data model at all. There still "
+"be a\n"
+"          default data-model template for you if you didn't enable "
+"authentication and\n"
+"          authorization in quickstart. If you have enabled authorization,"
+" the auth\n"
+"          data-model is ready-made."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:48
+msgid "Design my URL structure"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:50
+msgid "The \""
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:50
+msgid "root.py"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:50
+msgid "\" file under the"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:50
+msgid "/controllers"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:50
+msgid ""
+"folder has\n"
+"          your URLs. When you called this url ("
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:52
+msgid "about"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:52
+msgid ""
+"), the command went through the\n"
+"          RootController class to the"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:53
+msgid "about()"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:53
+msgid "method."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:55
+msgid ""
+"Those Python methods are responsible to create the dictionary of "
+"variables\n"
+"          that will be used in your web views (template)."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:60
+msgid "Reuse the web page elements"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:62
+msgid ""
+"A web page viewed by user could be constructed by single or several "
+"reusable\n"
+"                templates under"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:63
+msgid "/templates"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:63
+msgid ""
+".\n"
+"                Each projects gets quickstarted with a"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:64
+#: sample_ecommerce/templates/about.html:80
+msgid "master.html"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:64
+msgid ""
+"template and a bunch of templates for the pages provided by the "
+"RootController."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:71
+msgid "TurboGears2 quickstarted project"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:78
+msgid "The Master Template"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:80
+msgid "The"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:80
+msgid ""
+"template\n"
+"        controls the overall design of the page we're looking at. It "
+"draws the headers,\n"
+"        the footer, the notices flash and embeds the content of each page"
+" of your web applications.\n"
+"        Thus the \"master.html\" template provides the overall "
+"architecture for\n"
+"        each page in this site."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:86
+msgid ""
+"There's more to the \"master.html\" template... study it to see how the\n"
+"        <title> tags and static JS and CSS files are brought into the "
+"page.\n"
+"        Templating with Genshi is a powerful tool and we've only "
+"scratched the surface.\n"
+"        There are also a few little CSS tricks hidden in these pages, "
+"like the use of a\n"
+"        \"clearingdiv\" to make sure that your footer stays below the "
+"sidebars and always\n"
+"        looks right. That's not TG2 at work, just CSS. You'll need all "
+"your skills to\n"
+"        build a fine web app, but TG2 will make the hard parts easier so "
+"that you can\n"
+"        concentrate more on good design and content rather than "
+"struggling with\n"
+"        mechanics."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:100
+msgid "Authentication & Authorization in a TG2 site."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:102
+msgid ""
+"If you have access to this page, this means you have enabled "
+"authentication\n"
+"        and authorization in the quickstart to create your project."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:105
+msgid ""
+"The gearbox command will have created a few specific controllers for you."
+" But\n"
+"        before you go to play with those controllers you'll need to make "
+"sure your\n"
+"        application has been properly bootstapped. This is dead easy, "
+"here is how to do\n"
+"        this:"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:109
+msgid "gearbox setup-app"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:111
+msgid ""
+"inside your application's folder and you'll get a database setup (using "
+"the\n"
+"        preferences you have set in your development.ini file). This "
+"database will also\n"
+"        have been prepopulated with some default logins/passwords so that"
+" you can test\n"
+"        the secured controllers and methods."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:116
+msgid ""
+"To change the comportement of this setup-app command you just need to "
+"edit\n"
+"        the"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:117
+msgid "websetup.py"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:117
+msgid "file."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:119
+msgid "Now try to visiting the"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:120
+msgid "manage_permission_only"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:120
+msgid ""
+"URL. You will\n"
+"        be challenged with a login/password form."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:123
+msgid ""
+"Only managers are authorized to visit this method. You will need to log-"
+"in\n"
+"        using:"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:125
+msgid ""
+"login: manager\n"
+"password: managepass"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:128
+msgid "Another protected resource is"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:129
+msgid "editor_user_only"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:129
+msgid ""
+". This one is protected by\n"
+"        a different set of permissions. You will need to be"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:130
+msgid "editor"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:130
+msgid ""
+"with a\n"
+"        password of"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:131
+msgid "editpass"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:131
+msgid "to be able to access it."
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:133
+msgid ""
+"The last kind of protected resource in this quickstarted app is a full so"
+"\n"
+"        called"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:134
+msgid "secure controller"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:134
+msgid ""
+". This controller is\n"
+"        protected globally. Instead of having a @require decorator on "
+"each method, we\n"
+"        have set an allow_only attribute at the class level. All the "
+"methods in this\n"
+"        controller will require the same level of access. You need to be "
+"manager to\n"
+"        access"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:138
+msgid "secc"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:138
+msgid "or"
+msgstr ""
+
+#: sample_ecommerce/templates/about.html:139
+msgid "secc/some_where"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:14
+msgid "Content Type Dispatch"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:15
+msgid ""
+"This page shows how you can provide multiple pages\n"
+"          directly from the same controller method.  This page is "
+"generated\n"
+"          from the expose decorator with the template defintion provided."
+"\n"
+"          You can provide a url with parameters and this page will "
+"display\n"
+"          the parameters as html, and the json version will express\n"
+"          the entries as"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:21
+msgid "JSON"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:24
+msgid "Click here for the"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:24
+msgid "JSON Version of this page."
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:27
+msgid "The data provided in the template call is:"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:31
+msgid "Key"
+msgstr ""
+
+#: sample_ecommerce/templates/data.html:32
+msgid "Value"
+msgstr ""
+
+#: sample_ecommerce/templates/environ.html:8
+msgid "Learning TurboGears 2.3: Information about TG and WSGI"
+msgstr ""
+
+#: sample_ecommerce/templates/environ.html:20
+msgid "The WSGI nature of the framework"
+msgstr ""
+
+#: sample_ecommerce/templates/environ.html:22
+msgid ""
+"In this page you can see all the WSGI variables your request object has,\n"
+"         the ones in capital letters are required by the spec, then a "
+"sorted by\n"
+"         component list of variables provided by the Components, and at "
+"last\n"
+"         the \"wsgi.\" namespace with very useful information about your "
+"WSGI Server"
+msgstr ""
+
+#: sample_ecommerce/templates/environ.html:26
+msgid "The keys in the environment are:"
+msgstr ""
+
+#: sample_ecommerce/templates/error.html:8
+msgid "A"
+msgstr ""
+
+#: sample_ecommerce/templates/error.html:8
+msgid "Error has Occurred"
+msgstr ""
+
+#: sample_ecommerce/templates/error.html:12
+msgid "Error"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:8
+msgid "Welcome to TurboGears 2.3, standing on the shoulders of giants, since 2007"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:15
+msgid "Welcome to TurboGears 2.3"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:16
+msgid "If you see this page it means your installation was successful!"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:17
+msgid ""
+"TurboGears 2 is rapid web application development toolkit designed to "
+"make your life easier."
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:20
+msgid "Learn more"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:26
+msgid "TG2 Documentation"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:26
+msgid "new"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:26
+msgid "Get Started"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:28
+msgid "TG2 CookBook"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:28
+msgid "Read the Cookbook"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:30
+msgid "Join the Mail List"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:30
+msgid "for help/discussion"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:32
+msgid "Play on Runnable"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:32
+msgid "for basic examples"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:34
+msgid "Search Stackoverflow"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:34
+msgid "for questions"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:40
+msgid "Code your data model"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:41
+msgid "Design your data"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:41
+msgid "model"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:41
+msgid ", Create the database, and Add some bootstrap data."
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:45
+msgid "Design your URL architecture"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:46
+msgid "Decide your URLs, Program your"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:46
+msgid "controller"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:46
+msgid "methods, Design your"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:47
+msgid "templates"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:47
+msgid ", and place some static files (CSS and/or Javascript)."
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:51
+msgid "Distribute your app"
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:52
+msgid "Test your source, Generate project documents, Build a distribution."
+msgstr ""
+
+#: sample_ecommerce/templates/index.html:56
+msgid "Thank you for choosing TurboGears."
+msgstr ""
+
+#: sample_ecommerce/templates/login.html:8
+msgid "Login Form"
+msgstr ""
+
+#: sample_ecommerce/templates/login.html:12
+#: sample_ecommerce/templates/login.html:41
+#: sample_ecommerce/templates/master.html:39
+msgid "Login"
+msgstr ""
+
+#: sample_ecommerce/templates/login.html:19
+msgid "Username:"
+msgstr ""
+
+#: sample_ecommerce/templates/login.html:25
+msgid "Password:"
+msgstr ""
+
+#: sample_ecommerce/templates/login.html:34
+msgid "remember me"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:8
+msgid "Your generic title goes here"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:19
+msgid "Toggle navigation"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:25
+#: sample_ecommerce/templates/master.html:63
+msgid "TurboGears 2"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:32
+msgid "Welcome"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:33
+msgid "About"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:34
+msgid "Serving Data"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:35
+msgid "WSGI Environment"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:40
+msgid "Logout"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:41
+msgid "Admin"
+msgstr ""
+
+#: sample_ecommerce/templates/master.html:64
+msgid "Copyright ©"
+msgstr ""
+
