@@ -12,11 +12,13 @@ from tgext.admin.controller import AdminController
 
 from sample_ecommerce.lib.base import BaseController
 from sample_ecommerce.controllers.error import ErrorController
+from stroller2.controllers import RootController as StrollerController
 
 __all__ = ['RootController']
 
 
 class RootController(BaseController):
+    #commerce = StrollerController()
     """
     The root controller for the sample-ecommerce application.
 

@@ -1,4 +1,12 @@
-#hello_box {
-    font-style: italic;
-    color: red;
+
+ul {
+    list-style-type: none;
+    padding:0;
+    margin: 0;
+}
+
+.stroller-admin-table ul li {
+    float: left;
+    list-style: none outside none;
+    margin-right: 20px;
 }

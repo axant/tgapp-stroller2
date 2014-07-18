@@ -4,6 +4,10 @@
 
 #from webhelpers import date, feedgenerator, html, number, misc, text
 from markupsafe import Markup
+from tgext.pluggable import plug_url
 
 def bold(text):
     return Markup('<strong>%s</strong>' % text)
+
+def test():
+    return 'TEST'

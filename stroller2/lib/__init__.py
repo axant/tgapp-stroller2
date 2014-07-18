@@ -9,8 +9,7 @@ def get_new_product_form():
 
     new_product_form = stroller2_config.get('new_product_form_instance')
     if not new_product_form:
-        form_path = stroller2_config.get('stroller2.new_product_form',
-                                         'stroller2.lib.forms.NewProductForm')
+        form_path = stroller2_config.get('new_product_form', 'stroller2.lib.forms.NewProductForm')
         module, form_name = form_path.rsplit('.', 1)
         module = __import__(module, fromlist=form_name)
         form_class = getattr(module, form_name)
@@ -18,3 +17,29 @@ def get_new_product_form():
 
     return new_product_form
 
+
+def get_new_category_form():
+    stroller2_config = config['_pluggable_stroller2_config']
+
+    new_category_form = stroller2_config.get('new_category_form_instance')
+    if not new_category_form:
+        form_path = stroller2_config.get('new_category_form', 'stroller2.lib.forms.NewCategoryForm')
+        module, form_name = form_path.rsplit('.', 1)
+        module = __import__(module, fromlist=form_name)
+        form_class = getattr(module, form_name)
+        new_category_form = stroller2_config['new_category_form_instance'] = form_class()
+
+    return new_category_form
+
+def get_edit_category_form():
+    stroller2_config = config['_pluggable_stroller2_config']
+
+    edit_category_form = stroller2_config.get('edit_category_form_instance')
+    if not edit_category_form:
+        form_path = stroller2_config.get('edit_category_form', 'stroller2.lib.forms.EditCategoryForm')
+        module, form_name = form_path.rsplit('.', 1)
+        module = __import__(module, fromlist=form_name)
+        form_class = getattr(module, form_name)
+        edit_category_form = stroller2_config['edit_category_form_instance'] = form_class()
+
+    return edit_category_form
