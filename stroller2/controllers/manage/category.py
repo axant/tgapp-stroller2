@@ -38,8 +38,9 @@ class ManageCategoryController(TGController):
     @validate(get_edit_category_form(), error_handler=index)
     def save(self, **kw):
         kw['parent'] = app_globals.shop.category.get(kw.pop('parent_id'))
+        kw['_id'] = kw.pop('category_id')
         app_globals.shop.category.edit(**kw)
-        flash(_('Category created'))
+        flash(_('Category edited'))
         return redirect(plug_url('stroller2', '/manage/category/index'))
 
     @expose()
