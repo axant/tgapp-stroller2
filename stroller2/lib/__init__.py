@@ -18,6 +18,20 @@ def get_new_product_form():
     return new_product_form
 
 
+def get_edit_product_form():
+    stroller2_config = config['_pluggable_stroller2_config']
+
+    edit_product_form = stroller2_config.get('edit_product_form_instance')
+    if not edit_product_form:
+        form_path = stroller2_config.get('edit_product_form', 'stroller2.lib.forms.EditProductForm')
+        module, form_name = form_path.rsplit('.', 1)
+        module = __import__(module, fromlist=form_name)
+        form_class = getattr(module, form_name)
+        edit_product_form = stroller2_config['edit_product_form_instance'] = form_class()
+
+    return edit_product_form
+
+
 def get_new_category_form():
     stroller2_config = config['_pluggable_stroller2_config']
 

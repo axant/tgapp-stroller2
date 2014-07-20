@@ -20,7 +20,7 @@ class ManageCategoryController(TGController):
         return dict(form=get_new_category_form(), action=plug_url('stroller2', '/manage/category/create'))
 
     @expose()
-    @validate(get_new_category_form(), error_handler=index)
+    @validate(get_new_category_form(), error_handler=new)
     def create(self, **kw):
         kw['parent'] = app_globals.shop.category.get(kw.pop('parent_id'))
         app_globals.shop.category.create(**kw)
@@ -35,7 +35,7 @@ class ManageCategoryController(TGController):
                                parent_id=category.parent))
 
     @expose()
-    @validate(get_edit_category_form(), error_handler=index)
+    @validate(get_edit_category_form(), error_handler=edit)
     def save(self, **kw):
         kw['parent'] = app_globals.shop.category.get(kw.pop('parent_id'))
         kw['_id'] = kw.pop('category_id')

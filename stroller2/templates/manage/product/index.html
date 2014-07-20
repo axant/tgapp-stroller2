@@ -6,46 +6,40 @@
 
 <head>
     <title>Shop Management - Product</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/_pluggable/stroller2/css/style.css')}" />
 </head>
 
 <body>
 <div class="row">
-    <div class="col-md-offset-4 col-md-8">
+    <div class="col-md-offset-2 col-md-8">
+            <a class="btn btn-primary btn-block" href="${h.plug_url('stroller2', '/manage/product/new')}">New product</a>
         <hr/>
-        <table class="table table-bordered">
+        <table class="table table-bordered stroller-admin-table">
             <tr>
-                <th>Prodotto</th>
-                <th class="edit-header">Azioni</th>
+                <th>Product</th>
+                <th>Actions</th>
             </tr>
             <py:for each="product in products">
                 <tr>
-                    <td class="parent-entity"><a href="${h.product_url(product)}">${product.name['it']}</a></td>
-                    <td class="edit-field parent-entity">
+                    <td><a href="${h.plug_url('stroller2', '/product', params=dict(product_id=product._id))}">${product.name[tg.config.lang]}</a></td>
+                    <td>
                         <ul>
-                            <li><a href="${tg.url('/manage/product/edit',
-                                 params=dict(product_id=product._id))}" title="Modifica Prodotto">
+                            <li><a href="${h.plug_url('stroller2', '/manage/product/edit',
+                                 params=dict(product_id=product._id))}" title="Edit product">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a></li>
-                            <li><a href="${tg.url('/manage/product/delete',
+                            <li><a href="${h.plug_url('stroller2', '/manage/product/delete',
                                  params=dict(product_id=product._id))}"
-                                   onclick="return confirm('Procedere alla cancellazione?')" title="Elimina Prodotto">
+                                   onclick="return confirm('Do you really want to delete product?')" title="Delete product">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a></li>
-                            <li py:if="product.published"><a href="${tg.url('/manage/product/publish',
-                                 params=dict(product_id=product._id))}" title="Nascondi Prodotto">
+                            <li py:if="product.published"><a href="${h.plug_url('stroller2', '/manage/product/publish',
+                                 params=dict(product_id=product._id))}" title="Hide product">
                                 <span class="text-success glyphicon glyphicon-check"></span>
                             </a></li>
-                            <li py:if="not product.published"><a href="${tg.url('/manage/product/publish',
-                                 params=dict(product_id=product._id))}" title="Pubblica Prodotto">
+                            <li py:if="not product.published"><a href="${h.plug_url('stroller2', '/manage/product/publish',
+                                 params=dict(product_id=product._id))}" title="Publish product">
                                 <span class="text-error glyphicon glyphicon-check"></span>
-                            </a></li>
-                            <li><a href="${tg.url('/manage/product/new_configuration',
-                                 params=dict(product_id=product._id))}" title="Nuova Referenza">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </a></li>
-                            <li><a href="${tg.url('/manage/product/related_products',
-                                 params=dict(product_id=product._id))}" title="Prodotti/Articoli correlati">
-                                <span class="glyphicon glyphicon-th-list"></span>
                             </a></li>
                         </ul>
                     </td>
