@@ -21,7 +21,7 @@
             </tr>
             <py:for each="category in categories">
                 <tr>
-                    <td>${category.name[tg.config.lang]}</td>
+                    <td>${category.name_with_ancestors}</td>
                     <td>
                         <ul>
                             <li><a href="${h.plug_url('stroller2', '/manage/category/edit',

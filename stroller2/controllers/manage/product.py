@@ -42,11 +42,11 @@ class ManageProductController(TGController):
         del kw['photos']
         try:
             app_globals.shop.product.create(**kw)
-            flash(l_('Product created'))
+            flash(_('Product created'))
         except AlreadyExistingSlugException:
-            flash(l_('There is already a product with this slug'), 'error')
+            flash(_('There is already a product with this slug'), 'error')
         except AlreadyExistingSkuException:
-            flash(l_('There is already a product with this SKU'), 'error')
+            flash(_('There is already a product with this SKU'), 'error')
 
         return redirect(plug_url('stroller2', '/manage/product/index'))
 
@@ -95,7 +95,7 @@ class ManageProductController(TGController):
     def delete(self, product_id):
         product = product_id
         app_globals.shop.product.delete(product)
-        flash(l_('Product deleted'))
+        flash(_('Product deleted'))
         return redirect(plug_url('stroller2', '/manage/product/index'))
 
     @expose()

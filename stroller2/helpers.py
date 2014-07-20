@@ -6,8 +6,10 @@
 from markupsafe import Markup
 from tgext.pluggable import plug_url
 
+
 def bold(text):
     return Markup('<strong>%s</strong>' % text)
 
-def test():
-    return 'TEST'
+
+def product_url(product):
+    return plug_url('stroller2', '/product/%s' % product.slug)

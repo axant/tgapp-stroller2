@@ -10,3 +10,21 @@ ul {
     list-style: none outside none;
     margin-right: 20px;
 }
+
+.stroller-showcase-product-thumbnail {
+    border: 2px solid #00ff00;
+    padding: 10px;
+}
+
+.stroller-showcase-product-thumbnail-image{
+    height: 180px;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.stroller2-showcase-product-thumbnail-categories{
+    line-height: normal;
+    font-size: 14px;
+}
