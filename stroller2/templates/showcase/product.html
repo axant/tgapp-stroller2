@@ -2,42 +2,44 @@
       xmlns:py="http://genshi.edgewall.org/"
       py:strip="True">
 
-<div class="row stroller-showcase-product-thumbnail"
-     py:with="is_available = product.configurations[0].qty > 0">
-    <div class="col-md-3">
-        <a href="${h.product_url(product)}">
-            <div class="stroller-showcase-product-thumbnail-image" style="background-image: url('${product.thumbnail}')"></div>
-        </a>
-    </div>
+<div class="panel panel-default">
+    <div class="panel-body"
+         py:with="is_available = product.configurations[0].qty > 0">
+        <div class="col-md-3">
+            <a href="${h.stroller2_product_url(product)}">
+                <div class="stroller-showcase-product-thumbnail-image" style="background-image: url('${product.thumbnail}')"></div>
+            </a>
+        </div>
 
-    <div class="col-md-6">
-        <ul class="stroller2-showcase-product-thumbnail-categories">
-            <li py:for="category in product.categories">${category.name_with_ancestors}</li>
-        </ul>
-        <h2>${product.i18n_name}</h2>
-        <h3>€ <b>${'%.2f' % product.configuration_gross_price(product.configurations[0])}</b></h3>
-        <p py:if="is_available">
-            availability: <b>${product.configurations[0].qty}</b></p>
-        <p py:if="not is_available">SOLD OUT</p>
-    </div>
-    <div class="col-md-3">
-        <br/>
-        <a class="btn btn-info" href="${h.product_url(product)}">
-            <i class="glyphicon glyphicon-search"></i> View details
-        </a>
-        <br/>
-        <br/>
-        <a class="btn btn-success ${'disabled' if not is_available else ''}"
-           href="${h.plug_url('stroller2', '/product/add_to_basket', params=dict(product_id=product._id))}">
-            <i class="glyphicon glyphicon-shopping-cart"></i> Add to basket
-        </a>
-        <br/>
-        <br/>
-        <a class="btn btn-success ${'disabled' if not is_available else ''}"
-           href="${h.plug_url('stroller2', '/product/buy_now', params=dict(product_id=product._id))}">
-            <i class="glyphicon glyphicon-euro"></i> Buy now
-        </a>
+        <div class="col-md-6">
+            <ul class="stroller2-showcase-product-thumbnail-categories">
+                <li py:for="category in product.categories">${category.name_with_ancestors}</li>
+            </ul>
+            <h2>${product.i18n_name}</h2>
+            <h3>€ <b>${'%.2f' % product.configuration_gross_price(product.configurations[0])}</b></h3>
+            <p py:if="is_available">
+                availability: <b>${product.configurations[0].qty}</b></p>
+            <p py:if="not is_available">SOLD OUT</p>
+        </div>
+        <div class="col-md-3">
+            <br/>
+            <a class="btn btn-info" href="${h.stroller2_product_url(product)}">
+                <i class="glyphicon glyphicon-search"></i> View details
+            </a>
+            <br/>
+            <br/>
+            <a class="btn btn-success ${'disabled' if not is_available else ''}"
+               href="${h.plug_url('stroller2', '/product/add_to_cart', params=dict(product_id=product._id))}">
+                <i class="glyphicon glyphicon-shopping-cart"></i> Add to cart
+            </a>
+            <br/>
+            <br/>
+            <a class="btn btn-success ${'disabled' if not is_available else ''}"
+               href="${h.plug_url('stroller2', '/product/buy_now', params=dict(product_id=product._id))}">
+                <i class="glyphicon glyphicon-euro"></i> Buy now
+            </a>
+        </div>
     </div>
 </div>
-<br/>
+
 </html>

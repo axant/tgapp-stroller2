@@ -11,5 +11,8 @@ def bold(text):
     return Markup('<strong>%s</strong>' % text)
 
 
-def product_url(product):
+def stroller2_product_url(product):
     return plug_url('stroller2', '/product/%s' % product.slug)
+
+def stroller2_product_share_url(product):
+    return plug_url('stroller2', '/product/share/%s' % product.slug)

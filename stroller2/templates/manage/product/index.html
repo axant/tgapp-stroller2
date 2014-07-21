@@ -21,7 +21,7 @@
             </tr>
             <py:for each="product in products">
                 <tr>
-                    <td><a href="${h.plug_url('stroller2', '/product', params=dict(product_id=product._id))}">${product.name[tg.config.lang]}</a></td>
+                    <td><a href="${h.plug_url('stroller2', '/product/%s' % product.slug)}">${product.name[tg.config.lang]}</a></td>
                     <td>
                         <ul>
                             <li><a href="${h.plug_url('stroller2', '/manage/product/edit',

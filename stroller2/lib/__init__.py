@@ -45,6 +45,7 @@ def get_new_category_form():
 
     return new_category_form
 
+
 def get_edit_category_form():
     stroller2_config = config['_pluggable_stroller2_config']
 
@@ -57,3 +58,17 @@ def get_edit_category_form():
         edit_category_form = stroller2_config['edit_category_form_instance'] = form_class()
 
     return edit_category_form
+
+
+def get_buy_product_form():
+    stroller2_config = config['_pluggable_stroller2_config']
+
+    buy_product_form = stroller2_config.get('buy_product_form_instance')
+    if not buy_product_form:
+        form_path = stroller2_config.get('buy_product_form', 'stroller2.lib.forms.BuyProductForm')
+        module, form_name = form_path.rsplit('.', 1)
+        module = __import__(module, fromlist=form_name)
+        form_class = getattr(module, form_name)
+        buy_product_form = stroller2_config['buy_product_form_instance'] = form_class()
+
+    return buy_product_form
