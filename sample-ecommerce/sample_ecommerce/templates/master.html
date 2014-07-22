@@ -29,10 +29,11 @@
 
     <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="nav navbar-nav">
-            <li class="${('', 'active')[value_of('page') == 'index']}"><a href="${tg.url('/')}">Welcome</a></li>
-            <li class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
-            <li class="${('', 'active')[value_of('page') == 'data']}"><a href="${tg.url('/data')}">Serving Data</a></li>
-            <li class="${('', 'active')[value_of('page') == 'environ']}"><a href="${tg.url('/environ')}">WSGI Environment</a></li>
+            <li><a href="${tg.url('/commerce/manage/category')}">Manage Category</a></li>
+            <li><a href="${tg.url('/commerce/manage/product')}">Manage Product</a></li>
+            <li><a href="${tg.url('/commerce/showcase')}">Showcase</a></li>
+            <li><a href="${tg.url('/commerce/user_shipping_address')}">User shipping address</a></li>
+            <li><a href="${tg.url('/commerce/cart')}">Cart</a></li>
         </ul>
 
         <ul py:if="tg.auth_stack_enabled" class="nav navbar-nav navbar-right">
