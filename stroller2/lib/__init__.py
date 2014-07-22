@@ -17,6 +17,19 @@ def get_new_product_form():
 
     return new_product_form
 
+def get_new_user_address_form():
+    stroller2_config = config['_pluggable_stroller2_config']
+
+    new_user_address_form = stroller2_config.get('new_user_address_form_instance')
+    if not new_user_address_form:
+        form_path = stroller2_config.get('new_user_address_form', 'stroller2.lib.forms.NewUserAddressForm')
+        module, form_name = form_path.rsplit('.', 1)
+        module = __import__(module, fromlist=form_name)
+        form_class = getattr(module, form_name)
+        new_user_address_form = stroller2_config['new_user_address_form_instance'] = form_class()
+
+    return new_user_address_form
+
 
 def get_edit_product_form():
     stroller2_config = config['_pluggable_stroller2_config']

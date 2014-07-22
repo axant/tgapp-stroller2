@@ -58,6 +58,29 @@ class NewProductForm(ListForm):
     submit = SubmitButton(value=l_('Create'), css_class='btn btn-default')
 
 
+class NewUserAddressForm(ListForm):
+    receiver = TextField(label=l_('Receiver'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    address = TextArea(label=l_('Address'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    city = TextField(label=l_('City'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    province = TextField(label=l_('Province'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    state = TextField(label=l_('State'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    zipCode = TextField(label=l_('Zip Code'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    country = TextField(label=l_('Country'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+    details = TextField(label=l_('Details'), validator=Validator(required=True), css_class='form-control',
+                    container_attrs={'class': 'form-group'})
+
+
+
+    submit = SubmitButton(value=l_('Create'), css_class='btn btn-default')
+
+
 class EditProductForm(ListForm):
     product_id = HiddenField()
     name = TextField(label=l_('Name'), validator=Validator(required=True), css_class='form-control',

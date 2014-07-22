@@ -1,0 +1,45 @@
+html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<xi:include href="master.html" />
+
+<head>
+    <title>Shop Management - Product</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/_pluggable/stroller2/css/style.css')}" />
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+            <a class="btn btn-primary btn-block" href="${h.plug_url('stroller2', '/manage/user_address/new')}">New product</a>
+        <hr/>
+        <table class="table table-bordered stroller-admin-table">
+            <tr>
+                <th>Addresses</th>
+                <th>Actions</th>
+            </tr>
+            <py:for each="address in addresses">
+                <tr>
+                    <td><a href="${h.plug_url('stroller2', '/user_address/%s' % product.slug)}">${address.shipping_address.address}</a></td>
+                    <td>
+                        <ul>
+                            <li><a href="${h.plug_url('stroller2', '/manage/user_address/edit',
+                                 params=dict(address_id=address._id))}" title="Edit address">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a></li>
+                            <li><a href="${h.plug_url('stroller2', '/manage/user_address/delete',
+                                 params=dict(address_id=address._id))}"
+                                   onclick="return confirm('Do you really want to delete this address?')" title="Delete address">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a></li>
+
+                        </ul>
+                    </td>
+                </tr>
+            </py:for>
+        </table>
+    </div>
+</div>
+</body>
+</html>
