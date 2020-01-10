@@ -9,11 +9,6 @@ Install ``sample-ecommerce`` using the setup.py script::
     $ cd sample-ecommerce
     $ python setup.py develop
 
-Install Stroller2::
-
-    $ cd tgapp-stroller2 (parent of ``sample-ecommerce`` folder)
-    $ python setup.py develop
-
 Create the project database for any model classes defined::
 
     $ gearbox setup-app

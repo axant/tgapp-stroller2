@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-#quickstarted Options:
+
+#  Quickstarted Options:
 #
-# sqlalchemy: False
-# auth:       ming
-# mako:       False
+#  sqlalchemy: False
+#  auth:       ming
+#  mako:       False
 #
 #
 
-#This is just a work-around for a Python2.7 issue causing
-#interpreter crash at exit when trying to log an info message.
+# This is just a work-around for a Python2.7 issue causing
+# interpreter crash at exit when trying to log an info message.
 try:
     import logging
     import multiprocessing
@@ -25,22 +26,27 @@ except ImportError:
     use_setuptools()
     from setuptools import setup, find_packages
 
-testpkgs=['WebTest >= 1.2.3',
-               'nose',
-               'coverage',
-               'gearbox'
-               ]
+testpkgs = [
+    'WebTest >= 1.2.3',
+    'nose',
+    'coverage',
+    'gearbox'
+]
 
-install_requires=[
-    "TurboGears2 >= 2.3.3",
-    "Babel",
-    "Genshi",
+install_requires = [
+    "TurboGears2 >= 2.4.1",
+    "Beaker >= 1.8.0",
+    "Kajiki >= 0.6.3",
     "ming>=0.4.3",
     "repoze.who",
     "tw2.forms",
     "tgext.admin >= 0.6.1",
-    "waitress"
-    ]
+    "WebHelpers2"
+]
+
+if py_version != (3, 2):
+    # Babel not available on 3.2
+    install_requires.append("Babel")
 
 setup(
     name='sample-ecommerce',
@@ -48,23 +54,28 @@ setup(
     description='',
     author='',
     author_email='',
-    #url='',
+    url='',
     packages=find_packages(exclude=['ez_setup']),
     install_requires=install_requires,
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=testpkgs,
-    package_data={'sample_ecommerce': ['i18n/*/LC_MESSAGES/*.mo',
-                                 'templates/*/*',
-                                 'public/*/*']},
-    message_extractors={'sample_ecommerce': [
-            ('**.py', 'python', None),
-            ('templates/**.html', 'genshi', None),
-            ('public/**', 'ignore', None)]},
-
+    extras_require={
+        'testing': testpkgs
+    },
+    package_data={'sampleecommerce': [
+        'i18n/*/LC_MESSAGES/*.mo',
+        'templates/*/*',
+        'public/*/*'
+    ]},
+    message_extractors={'sampleecommerce': [
+        ('**.py', 'python', None),
+        ('templates/**.xhtml', 'kajiki', {'strip_text': False, 'extract_python': True}),
+        ('public/**', 'ignore', None)
+    ]},
     entry_points={
         'paste.app_factory': [
-            'main = sample_ecommerce.config.middleware:make_app'
+            'main = sampleecommerce.config.application:make_app'
         ],
         'gearbox.plugins': [
             'turbogears-devtools = tg.devtools'
