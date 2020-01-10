@@ -17,13 +17,13 @@ from tgext.pluggable import app_model
 class ManageUserAddressesController(TGController):
     photos = TemporaryPhotosUploader()
 
-    @expose('genshi:stroller2.templates.manage.product.index')
+    @expose('stroller2.templates.manage.user_address.index')
     def index(self, **kw):
         user_id = tg.request.identity['user']._id
-        addresses = app_model.UserAddress.find({'user_id':user_id}).first()
-        return dict(addresses=addresses)
+        addresses = app_model.UserAddress.query.find({'user_id':user_id}).first()
+        return dict(addresses=addresses if addresses else [])
 
-    @expose('genshi:stroller2.templates.manage.user_address.new')
+    @expose('stroller2.templates.manage.user_address.new')
     def new(self, **kw):
         validation_error = request.validation['exception']
         print "NEW"
@@ -46,7 +46,7 @@ class ManageUserAddressesController(TGController):
 
         return redirect(plug_url('stroller2', '/manage/product/index'))
 
-    @expose('genshi:stroller2.templates.manage.product.edit')
+    @expose('stroller2.templates.manage.product.edit')
     @validate({'product_id': ProductValidator()}, error_handler=fail_with(404))
     def edit(self, product_id, **kw):
         validation_error = request.validation['exception']

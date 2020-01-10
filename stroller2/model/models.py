@@ -10,6 +10,7 @@ class TemporaryPhotosBucket(MappedClass):
     class __mongometa__:
         session = DBSession
         name = 'temporary_photos_bucket'
+        unique_indexes = [('created_at',),]
 
     _id = FieldProperty(s.ObjectId)
     created_at = FieldProperty(s.DateTime, required=True, if_missing=datetime.utcnow)
@@ -24,6 +25,7 @@ class UserAddress(MappedClass):
     class __mongometa__:
         session = DBSession
         name = 'user_addresses'
+        unique_indexes = [('user_id',),]
 
     _id = FieldProperty(s.ObjectId)
     user = RelationProperty(app_model.User)

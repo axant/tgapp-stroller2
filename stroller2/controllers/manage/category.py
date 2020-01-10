@@ -8,14 +8,13 @@ from tgext.pluggable import plug_url
 from tg.i18n import lazy_ugettext as l_, ugettext as _
 
 
-
 class ManageCategoryController(TGController):
-    @expose('genshi:stroller2.templates.manage.category.index')
+    @expose('stroller2.templates.manage.category.index')
     def index(self, **kw):
         categories = app_globals.shop.category.get_all().all()
         return dict(categories=categories)
 
-    @expose('genshi:stroller2.templates.manage.category.new')
+    @expose('stroller2.templates.manage.category.new')
     def new(self, **kw):
         return dict(form=get_new_category_form(), action=plug_url('stroller2', '/manage/category/create'))
 
@@ -27,7 +26,7 @@ class ManageCategoryController(TGController):
         flash(_('Category created'))
         return redirect(plug_url('stroller2', '/manage/category/index'))
 
-    @expose('genshi:stroller2.templates.manage.category.edit')
+    @expose('stroller2.templates.manage.category.edit')
     def edit(self, **kw):
         category = app_globals.shop.category.get(kw['category_id'])
         return dict(form=get_edit_category_form(), action=plug_url('stroller2', '/manage/category/save'),

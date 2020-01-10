@@ -16,13 +16,13 @@ from tg.i18n import lazy_ugettext as l_, ugettext as _
 class ManageProductController(TGController):
     photos = TemporaryPhotosUploader()
 
-    @expose('genshi:stroller2.templates.manage.product.index')
+    @expose('stroller2.templates.manage.product.index')
     def index(self, **kw):
         products = app_globals.shop.product.get_many('product',
                                                      {'active': True, 'published': {'$in': [None, True, False]}}).all()
         return dict(products=products)
 
-    @expose('genshi:stroller2.templates.manage.product.new')
+    @expose('stroller2.templates.manage.product.new')
     def new(self, **kw):
         validation_error = request.validation['exception']
         if validation_error is not None:
@@ -50,7 +50,7 @@ class ManageProductController(TGController):
 
         return redirect(plug_url('stroller2', '/manage/product/index'))
 
-    @expose('genshi:stroller2.templates.manage.product.edit')
+    @expose('stroller2.templates.manage.product.edit')
     @validate({'product_id': ProductValidator()}, error_handler=fail_with(404))
     def edit(self, product_id, **kw):
         validation_error = request.validation['exception']

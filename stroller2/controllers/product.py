@@ -14,7 +14,7 @@ from tgext.pluggable import plug_url
 
 class ProductController(TGController):
 
-    @expose('genshi:stroller2.templates.product.product')
+    @expose('stroller2.templates.product.product')
     def _default(self, slug=None, product=None, *args, **kw):
         product = app_globals.shop.product.get(slug=slug, _id=product)
         if product is None:
