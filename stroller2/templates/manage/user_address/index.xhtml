@@ -1,0 +1,44 @@
+<html py:extends="master.xhtml" py:strip="True">
+
+    <head py:block="head" py:strip="True">
+        <title>Shop Management - Product</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/_pluggable/stroller2/css/style.css')}" />
+    </head>
+
+    <body py:block="body" py:strip="True">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                    <a class="btn btn-primary btn-block" 
+                        href="${h.plug_url('stroller2', '/manage/address/new')}">
+                        New address
+                    </a>
+                <hr/>
+                <table class="table table-bordered stroller-admin-table">
+                    <tr>
+                        <th>Addresses</th>
+                        <th>Actions</th>
+                    </tr>
+                    <py:for each="address in addresses">
+                        <tr>
+                            <td><a href="${h.plug_url('stroller2', '/user_address/%s' % product.slug)}">${address.shipping_address.address}</a></td>
+                            <td>
+                                <ul>
+                                    <li><a href="${h.plug_url('stroller2', '/manage/user_address/edit',
+                                        params=dict(address_id=address._id))}" title="Edit address">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a></li>
+                                    <li><a href="${h.plug_url('stroller2', '/manage/user_address/delete',
+                                        params=dict(address_id=address._id))}"
+                                        onclick="return confirm('Do you really want to delete this address?')" title="Delete address">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a></li>
+
+                                </ul>
+                            </td>
+                        </tr>
+                    </py:for>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
