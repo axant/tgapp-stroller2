@@ -1,4 +1,0 @@
-recursive-include sampleecommerce/public *
-include sampleecommerce/public/favicon.ico
-recursive-include sampleecommerce/i18n *
-recursive-include sampleecommerce/templates *
