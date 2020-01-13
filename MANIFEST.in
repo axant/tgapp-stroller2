@@ -1,4 +1,1 @@
-recursive-include stroller2/public *
-recursive-include stroller2/templates *.html
-global-exclude *.pyc
-
+/home/sergio/virtual/tgapp-stroller2/MANIFEST.in
