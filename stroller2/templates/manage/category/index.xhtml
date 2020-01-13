@@ -1,0 +1,40 @@
+<html py:extends="master.xhtml" py:strip="True">
+
+    <head py:block="head" py:strip="True">
+        <title>Shop management - Category</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/_pluggable/stroller2/css/style.css')}" />
+    </head>
+
+    <body py:block="body" py:strip="True">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <a class="btn btn-primary btn-block" href="${h.plug_url('stroller2', '/manage/category/new')}">New category</a>
+                <hr/>
+                <table class="table table-bordered stroller-admin-table">
+                    <tr>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                    <py:for each="category in categories">
+                        <tr>
+                            <td>${category.name_with_ancestors}</td>
+                            <td>
+                                <ul>
+                                    <li><a href="${h.plug_url('stroller2', '/manage/category/edit',
+                                        params=dict(category_id=category._id))}" title="Edit category">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a></li>
+                                    <li><a href="${h.plug_url('stroller2', '/manage/category/delete',
+                                        params=dict(category_id=category._id))}" title="Delete category"
+                                        onclick="return confirm('Do you really want to delete category?')">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </py:for>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
