@@ -18,8 +18,13 @@ class ManageProductController(TGController):
 
     @expose('stroller2.templates.manage.product.index')
     def index(self, **kw):
-        products = app_globals.shop.product.get_many('product',
-                                                     {'active': True, 'published': {'$in': [None, True, False]}}).all()
+        products = app_globals.shop.product.get_many(
+            'product',
+            {
+                'active': True,
+                'published': {'$in': [None, True, False]}
+            }).all()
+        print('products', products)
         return dict(products=products)
 
     @expose('stroller2.templates.manage.product.new')

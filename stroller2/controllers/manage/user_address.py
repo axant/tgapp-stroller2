@@ -26,8 +26,10 @@ class ManageUserAddressesController(TGController):
     @expose('stroller2.templates.manage.user_address.new')
     def new(self, **kw):
         validation_error = request.validation['exception']
-        print "NEW"
-        return dict(form = get_new_user_address_form(), action=plug_url('stroller2', '/manage/user_address/create'))
+        return dict(
+            form = get_new_user_address_form(),
+            action=plug_url('stroller2', '/manage/user_address/create')
+        )
 
     @expose()
     @validate(get_new_product_form(), error_handler=new)

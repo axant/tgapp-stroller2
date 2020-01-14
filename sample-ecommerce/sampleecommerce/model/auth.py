@@ -80,10 +80,6 @@ class User(MappedClass):
 
             password = salt + hash
 
-            # Make sure the hashed password is a unicode object at the end of the
-            # process because SQLAlchemy _wants_ unicode objects for Unicode cols
-            password = password.decode('utf-8')
-
             return password
 
         def __set__(self, instance, value):

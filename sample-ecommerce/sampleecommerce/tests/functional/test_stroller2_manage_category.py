@@ -46,3 +46,36 @@ class TestManageCategoryController(TestController):
             extra_environ=self.admin_environ
         )
         assert 'Category created' in redirection.body.decode('utf-8')
+
+    def test_edit_category(self):
+        response = self.app.get(
+            '/commerce/manage/category/edit',
+            extra_environ=self.admin_environ,
+            params=dict(category_id=str(self.category._id)),
+            status=200
+        )
+
+        form = response.form
+        form['name'] = 'Categoria 1 Modificata'
+        submission = form.submit(
+            extra_environ=self.admin_environ,
+            status=302
+        )
+        redirection = submission.follow(
+            extra_environ=self.admin_environ
+        )
+        assert 'Category edited' in redirection.body.decode('utf-8')
+
+    def test_delete_category(self):
+        response = self.app.get(
+            '/commerce/manage/category/delete',
+            params=dict(category_id=str(self.category._id)),
+            extra_environ=self.admin_environ,
+            status=302
+        )
+
+        redirection = response.follow(
+            extra_environ=self.admin_environ,
+            status=200
+        )
+        assert 'Category deleted' in redirection.body.decode('utf8')

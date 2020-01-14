@@ -28,7 +28,6 @@ class ProductController(TGController):
     @expose()
     @validate(get_buy_product_form(), error_handler=_default)
     def add_to_cart(self, product=None, quantity=1, **kw):
-        print kw
         return
         product = app_globals.shop.product.get(_id=product)
         if product is None:

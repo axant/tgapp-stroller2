@@ -25,7 +25,7 @@ class UserAddress(MappedClass):
     class __mongometa__:
         session = DBSession
         name = 'user_addresses'
-        unique_indexes = [('user_id',),]
+        indexes = [('user_id',),]
 
     _id = FieldProperty(s.ObjectId)
     user = RelationProperty(app_model.User)
