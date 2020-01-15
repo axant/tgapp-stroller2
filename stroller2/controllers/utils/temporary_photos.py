@@ -44,7 +44,6 @@ class TemporaryPhotosUploader(TGController):
         bucket.photos = photos
         return [dict(url=p.thumb_url, uid=str(idx)) for idx, p in enumerate(bucket.photos)]
 
-
     @classmethod
     def save_image(cls, file):
         attached_image = AttachedImage(file.file, file.filename)

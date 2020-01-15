@@ -13,9 +13,9 @@ from tg.i18n import lazy_ugettext as l_
 
 
 class CustomListLayout(ListLayout):
-    inline_engine_name = 'genshi'
+    inline_engine_name = 'kajiki'
     template = '''
-<div xmlns:py="http://genshi.edgewall.org/" py:attrs="w.attrs">
+<div>
     <py:for each="c in w.children_hidden">
         ${c.display()}
     </py:for>
@@ -29,7 +29,9 @@ class CustomListLayout(ListLayout):
 </div>
 '''
 
+
 class NewProductForm(ListForm):
+
     name = TextField(label=l_('Name'), validator=Validator(required=True), css_class='form-control',
                      container_attrs={'class': 'form-group'})
     description = TextArea(label=l_('Description'), validator=Validator(required=True), css_class='form-control',
@@ -50,10 +52,10 @@ class NewProductForm(ListForm):
                     container_attrs={'class': 'form-group'})
     weight = TextField(label=l_('Weight (g)'), validator=Number(min=0.0, not_empty=True),
                        css_class='form-control')
-    photos = AjaxManagePhotos(label=l_('Photos'),
-                              css_class="ajax_manage_photos",
-                              action=json_lurl('/commerce/manage/product/photos/save'),
-                              delete_action=json_lurl('/commerce/manage/product/photos/remove'))
+    # photos = AjaxManagePhotos(label=l_('Photos'),
+    #                           css_class="ajax_manage_photos",
+    #                           action=json_lurl('/commerce/manage/product/photos/save'),
+    #                           delete_action=json_lurl('/commerce/manage/product/photos/remove'))
 
     submit = SubmitButton(value=l_('Create'), css_class='btn btn-default')
 
@@ -75,8 +77,6 @@ class NewUserAddressForm(ListForm):
                     container_attrs={'class': 'form-group'})
     details = TextField(label=l_('Details'), validator=Validator(required=True), css_class='form-control',
                     container_attrs={'class': 'form-group'})
-
-
 
     submit = SubmitButton(value=l_('Create'), css_class='btn btn-default')
 
@@ -125,10 +125,13 @@ class EditCategoryForm(ListForm):
     category_id = HiddenField()
     name = TextField(label=l_('Name'), validator=Validator(required=True), css_class='form-control',
                      container_attrs={'class': 'form-group'})
-    parent_id = SingleSelectField(label=l_('Parent'),
-                                  css_class="form-control", container_attrs={'class': 'form-group'},
-                                  options=Deferred(lambda: [(c._id, c.name[tg.config.lang])
-                                                            for c in app_globals.shop.category.get_all()]))
+    parent_id = SingleSelectField(
+        label=l_('Parent'),
+        css_class="form-control", container_attrs={'class': 'form-group'},
+        options=Deferred(lambda: [
+            (c._id, c.name[tg.config.lang]) for c in app_globals.shop.category.get_all()
+        ])
+    )
     submit = SubmitButton(value=l_('Save'), css_class='btn btn-default')
 
 

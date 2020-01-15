@@ -25,7 +25,7 @@ class ManageUserAddressesController(TGController):
 
     @expose('stroller2.templates.manage.user_address.new')
     def new(self, **kw):
-        validation_error = request.validation['exception']
+        validation_error = request.validation.exception
         return dict(
             form = get_new_user_address_form(),
             action=plug_url('stroller2', '/manage/user_address/create')
@@ -51,7 +51,7 @@ class ManageUserAddressesController(TGController):
     @expose('stroller2.templates.manage.product.edit')
     @validate({'product_id': ProductValidator()}, error_handler=fail_with(404))
     def edit(self, product_id, **kw):
-        validation_error = request.validation['exception']
+        validation_error = request.validation.exception
         if validation_error is not None:
             fields = validation_error.widget.child.children
             fields.photos.value = {'photos': self.photos.current_photos()}

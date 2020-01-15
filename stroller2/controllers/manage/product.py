@@ -29,23 +29,26 @@ class ManageProductController(TGController):
 
     @expose('stroller2.templates.manage.product.new')
     def new(self, **kw):
-        validation_error = request.validation['exception']
-        if validation_error is not None:
-            fields = validation_error.widget.child.children
+        if request.validation.exception is not None:
+            fields = request.validation.exception.widget.child.children
             fields.photos.value = {'photos': self.photos.current_photos()}
         else:
             self.photos.new_bucket()
-
-        return dict(form=get_new_product_form(), action=plug_url('stroller2', '/manage/product/create'))
+        return dict(
+            form=get_new_product_form(),
+            action=plug_url('stroller2', '/manage/product/create')
+        )
 
     @expose()
     @validate(get_new_product_form(), error_handler=new)
     def create(self, **kw):
         kw['type'] = 'product'
         bucket = self.photos.get_bucket()
-        kw['product_photos'] = bucket.photos
-        del kw['photos']
+        if 'product_photos' in kw.keys():
+            kw['product_photos'] = bucket.photos
+            del kw['photos']
         try:
+            print(kw)
             app_globals.shop.product.create(**kw)
             flash(_('Product created'))
         except AlreadyExistingSlugException:
