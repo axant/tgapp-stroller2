@@ -7,7 +7,6 @@ from webtest import TestApp
 from gearbox.commands.setup_app import SetupAppCommand
 from tg import config
 from tg.util import Bunch
-from tgext.ecommerce.lib.shop import ShopManager
 from sampleecommerce import model
 
 __all__ = ['setup_app', 'setup_db', 'teardown_db', 'TestController']
@@ -59,14 +58,13 @@ class TestController(object):
 
     """
     application_under_test = application_name
-    admin_environ = {'REMOTE_USER': 'manager@somedomain.com'}
-    editor_environ = {'REMOTE_USER': 'editor@somedomain.com'}
+    admin_environ = {'REMOTE_USER': 'manager'}
+    editor_environ = {'REMOTE_USER': 'editor'}
 
     def setUp(self):
         """Setup test fixture for each functional test method."""
         self.app = load_app(self.application_under_test)
         setup_app()
-        # self.shopmanager = ShopManager()
 
     def tearDown(self):
         """Tear down test fixture for each functional test method."""

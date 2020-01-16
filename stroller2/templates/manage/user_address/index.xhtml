@@ -20,19 +20,19 @@
                     </tr>
                     <py:for each="address in addresses">
                         <tr>
-                            <td><a href="${h.plug_url('stroller2', '/user_address/%s' % product.slug)}">${address.shipping_address.address}</a></td>
+                            <td>
+                                <a href="${h.plug_url('stroller2', '/address/%s' % address._id)}">${address.shipping_address.address}</a></td>
                             <td>
                                 <ul>
-                                    <li><a href="${h.plug_url('stroller2', '/manage/user_address/edit',
+                                    <li><a href="${h.plug_url('stroller2', '/manage/address/edit',
                                         params=dict(address_id=address._id))}" title="Edit address">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a></li>
-                                    <li><a href="${h.plug_url('stroller2', '/manage/user_address/delete',
+                                    <li><a href="${h.plug_url('stroller2', '/manage/address/delete',
                                         params=dict(address_id=address._id))}"
                                         onclick="return confirm('Do you really want to delete this address?')" title="Delete address">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a></li>
-
                                 </ul>
                             </td>
                         </tr>

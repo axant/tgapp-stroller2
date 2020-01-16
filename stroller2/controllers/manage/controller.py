@@ -9,6 +9,3 @@ class ManageController(TGController):
     product = ManageProductController()
     category = ManageCategoryController()
     address = ManageUserAddressesController()
-    @expose()
-    def index(self):
-        return {}

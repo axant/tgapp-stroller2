@@ -9,7 +9,8 @@ forms_types = {
     'buy_product': {'name': 'buy_product_form', 'klass': 'stroller2.lib.forms.BuyProductForm', 'instance': 'buy_product_form_instance'},
     'new_category': {'name': 'new_category_form', 'klass': 'stroller2.lib.forms.NewCategoryForm', 'instance': 'new_category_form_instance'},
     'edit_category': {'name': 'edit_category_form', 'klass': 'stroller2.lib.forms.EditCategoryForm', 'instance': 'edit_category_form_instance'},
-    'new_user_address': {'name': 'new_user_address_form', 'klass': 'stroller2.lib.forms.NewUserAddressForm', 'instance': 'new_user_address_form_instance'}
+    'new_user_address': {'name': 'new_user_address_form', 'klass': 'stroller2.lib.forms.NewUserAddressForm', 'instance': 'new_user_address_form_instance'},
+    'edit_user_address': {'name': 'edit_user_address_form', 'klass': 'stroller2.lib.forms.EditUserAddressForm', 'instance': 'edit_user_address_form_instance'}
 }
 
 
@@ -34,6 +35,10 @@ def get_new_product_form():
 
 def get_new_user_address_form():
     return get_form('new_user_address')
+
+
+def get_edit_user_address_form():
+    return get_form('edit_user_address')
 
 
 def get_edit_product_form():

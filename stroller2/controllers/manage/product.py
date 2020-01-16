@@ -69,18 +69,30 @@ class ManageProductController(TGController):
         else:
             self.photos.new_bucket()
             product = product_id
-            value = dict(product_id=product._id, name=product.name[tg.config.lang],
-                         description=product.description[tg.config.lang],
-                         sku=product.configurations[0].sku,
-                         price=product.configurations[0].price,
-                         rate=product.configurations[0].rate,
-                         vat=product.configurations[0].vat,
-                         qty=product.configurations[0].qty,
-                         weight=product.details.weight,
-                         categories_ids=[str(category_id) for category_id in product.categories_ids],
-                         photos={'photos': self.photos.recover_photos(product.details.product_photos)})
-        return dict(form=get_edit_product_form(), value=value, action=plug_url('stroller2', '/manage/product/save'))
-
+            photos = []
+            try:
+                photos = self.photos.recover_photos(product.details.product_photos)
+            except AttributeError as ex:
+                pass
+            value = dict(
+                product_id=product._id, name=product.name[tg.config.lang],
+                description=product.description[tg.config.lang],
+                sku=product.configurations[0].sku,
+                price=product.configurations[0].price,
+                rate=product.configurations[0].rate,
+                vat=product.configurations[0].vat,
+                qty=product.configurations[0].qty,
+                weight=product.details.weight,
+                categories_ids=product.categories_ids,
+                photos={
+                    'photos': photos
+                }
+            )
+        return dict(
+            form=get_edit_product_form(),
+            value=value,
+            action=plug_url('stroller2', '/manage/product/save')
+        )
 
     @expose()
     @validate(get_edit_product_form(), error_handler=validated_handler(edit))
@@ -96,7 +108,6 @@ class ManageProductController(TGController):
         app_globals.shop.product.edit_configuration(product, 0, **kw)
         flash(_('Product edited'))
         return redirect(plug_url('stroller2', '/manage/product/index'))
-
 
     @expose()
     @validate({'product_id': ProductValidator()}, error_handler=fail_with(404))

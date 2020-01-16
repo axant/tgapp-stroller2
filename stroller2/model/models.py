@@ -31,11 +31,12 @@ class UserAddress(MappedClass):
     user = RelationProperty(app_model.User)
     user_id = ForeignIdProperty(app_model.User)
     shipping_address = FieldProperty({
-                                      'receiver': s.String,
-                                      'address': s.String,
-                                      'city': s.String,
-                                      'province': s.String,
-                                      'state': s.String,
-                                      'country': s.String,
-                                      'details':{}
-                                     })
+        'receiver': s.String,
+        'address': s.String,
+        'city': s.String,
+        'province': s.String,
+        'state': s.String,
+        'country': s.String,
+        'zip': s.String,
+        'details': s.Anything
+    })

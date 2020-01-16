@@ -49,8 +49,6 @@ class TemporaryPhotosUploader(TGController):
 
     @classmethod
     def save_image(cls, file):
-        from io import StringIO
-
         attached_image = AttachedImage(file.file, file.filename)
         attached_image.thumbnail_size = (200, 200)
         attached_image.write()
