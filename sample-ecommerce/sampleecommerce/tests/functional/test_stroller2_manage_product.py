@@ -7,39 +7,54 @@ from tgext.ecommerce.model.models import Category, Product
 from sampleecommerce.model import DBSession
 from datetime import datetime, timedelta
 
+
+
 class TestManageProductController(TestController):
 
     def setup(self):
         super(TestManageProductController, self).setUp()
+        # self.category = self.shopmanager.category.create(
+        #     'Categoria 1', slug='cat-1', sort_weight=1
+        # )
         self.category = Category(
             name={'en': 'Categoria 1'},
             slug='cat-1',
             details='details',
             sort_weight=1
         )
-        # self.product = Product(
-        #     type='type',
-        #     name={'en': 'Prodotto 1'},
-        #     category_id=self.category._id,
-        #     categories_ids=[self.category._id, ],
-        #     description={'en': 'descrizione'},
-        #     slug='product-1',
-        #     details={'details': 'first detail'},
-        #     active=True,
-        #     published=True,
-        #     valid_from=datetime.utcnow() - timedelta(days=1),
-        #     valid_to=datetime.utcnow() + timedelta(days=90),
-        #     configurations=[{
-        #         'sku': 'sku',
-        #         'variety': {'en': 'variety 1'},
-        #         'price': 10.0,
-        #         'rate': 22.0,
-        #         'vat': 2.2,
-        #         'qty': 10,
-        #         'initial_quantity': 10
-        #     }]
-        # )
         DBSession.flush()
+        self.proddata = {
+            'name': 'Prodotto 1', 'description': 'Descr Prod1', 'sku': 'SKUPROD1',
+            'categories_ids': [str(self.category._id), ], 'price': 10, 'rate': 22, 'vat': 2.2, 'qty': 10,
+            'weight': 1000, 'type': 'product'}
+
+    def tests_create_product(self):
+        response = self.app.get(
+            '/commerce/manage/product/new',
+            extra_environ=self.admin_environ,
+            status=200
+        )
+        form = response.form
+        form['name'] = self.proddata['name']
+        form['description'] = self.proddata['description']
+        form['categories_ids'] = self.proddata['categories_ids']
+        form['sku'] = self.proddata['sku']
+        form['price'] = self.proddata['price']
+        form['rate'] = self.proddata['rate']
+        form['vat'] = self.proddata['vat']
+        form['qty'] = self.proddata['qty']
+        form['weight'] = self.proddata['weight']
+
+        submission = form.submit(
+            extra_environ=self.admin_environ,
+            status=302
+        )
+        redirection = submission.follow(
+            extra_environ=self.admin_environ
+        )
+        redirection.showbrowser()
+        assert self.proddata['name'] in redirection.body.decode('utf-8')
+
 
     def test_product_index(self):
         response = self.app.get(

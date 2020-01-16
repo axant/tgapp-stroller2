@@ -52,10 +52,10 @@ class NewProductForm(ListForm):
                     container_attrs={'class': 'form-group'})
     weight = TextField(label=l_('Weight (g)'), validator=Number(min=0.0, not_empty=True),
                        css_class='form-control')
-    # photos = AjaxManagePhotos(label=l_('Photos'),
-    #                           css_class="ajax_manage_photos",
-    #                           action=json_lurl('/commerce/manage/product/photos/save'),
-    #                           delete_action=json_lurl('/commerce/manage/product/photos/remove'))
+    photos = AjaxManagePhotos(label=l_('Photos'),
+                              css_class="ajax_manage_photos",
+                              action=json_lurl('/commerce/manage/product/photos/save'),
+                              delete_action=json_lurl('/commerce/manage/product/photos/remove'))
 
     submit = SubmitButton(value=l_('Create'), css_class='btn btn-default')
 

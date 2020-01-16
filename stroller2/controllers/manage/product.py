@@ -61,7 +61,7 @@ class ManageProductController(TGController):
     @expose('stroller2.templates.manage.product.edit')
     @validate({'product_id': ProductValidator()}, error_handler=fail_with(404))
     def edit(self, product_id, **kw):
-        validation_error = request.validation['exception']
+        validation_error = request.validation.exception
         if validation_error is not None:
             fields = validation_error.widget.child.children
             fields.photos.value = {'photos': self.photos.current_photos()}

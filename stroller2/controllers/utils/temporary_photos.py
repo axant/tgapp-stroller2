@@ -7,6 +7,7 @@ from stroller2.model import TemporaryPhotosBucket
 from datetime import datetime
 from tw2.forms import FileValidator
 from tw2.core import IntValidator
+from bson import ObjectId
 
 log = logging.getLogger('tavolaclandestina')
 
@@ -16,20 +17,22 @@ class TemporaryPhotosUploader(TGController):
     def get_bucket(cls):
         bucket = None
         bucket_id = session.get('temporary_photos_bucket_id')
+        print('bucket_id', bucket_id)
         if bucket_id is not None:
-            bucket = TemporaryPhotosBucket.query.get(_id=bucket_id)
+            bucket = TemporaryPhotosBucket.query.get(_id=ObjectId(bucket_id))
+            print('bucket', bucket)
 
         if bucket is None:
             bucket = TemporaryPhotosBucket(created_at=datetime.utcnow())
 
-        session['temporary_photos_bucket_id'] = bucket._id
+        session['temporary_photos_bucket_id'] = str(bucket._id)
         session.save()
         return bucket
 
     @classmethod
     def new_bucket(cls):
         bucket = TemporaryPhotosBucket(created_at=datetime.utcnow())
-        session['temporary_photos_bucket_id'] = bucket._id
+        session['temporary_photos_bucket_id'] = str(bucket._id)
         session.save()
         return bucket
 
@@ -46,6 +49,8 @@ class TemporaryPhotosUploader(TGController):
 
     @classmethod
     def save_image(cls, file):
+        from io import StringIO
+
         attached_image = AttachedImage(file.file, file.filename)
         attached_image.thumbnail_size = (200, 200)
         attached_image.write()
