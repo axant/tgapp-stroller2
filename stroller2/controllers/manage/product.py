@@ -48,7 +48,6 @@ class ManageProductController(TGController):
             kw['product_photos'] = bucket.photos
             del kw['photos']
         try:
-            print(kw)
             app_globals.shop.product.create(**kw)
             flash(_('Product created'))
         except AlreadyExistingSlugException:

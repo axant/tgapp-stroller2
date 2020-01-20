@@ -1,25 +1,47 @@
 from datetime import datetime
+
+from depot.fields.interfaces import FileFilter
+from depot.manager import DepotManager
 from ming import schema as s
 from ming.odm import FieldProperty, ForeignIdProperty, RelationProperty
 from ming.odm.declarative import MappedClass
 from stroller2.model import DBSession
 from tgext.pluggable import app_model
+from depot.fields.ming import UploadedFileProperty
+from depot.fields.specialized.image import UploadedImageWithThumb as UploadedThumb
+
+
+class UploadedImageWithThumb(UploadedThumb):
+    thumbnail_size = (200, 200)
+
+
+class BucketProductImage(MappedClass):
+    class __mongometa__:
+        session = DBSession
+        name = 'bucket_product_image'
+        indexes = [('bucket_id', )]
+
+    _id = FieldProperty(s.ObjectId)
+
+    image = UploadedFileProperty(
+            upload_storage='product_images',
+            upload_type=UploadedImageWithThumb
+        )
+
+    bucket_id = ForeignIdProperty('TemporaryPhotosBucket')
+    bucket = RelationProperty('TemporaryPhotosBucket')
 
 
 class TemporaryPhotosBucket(MappedClass):
     class __mongometa__:
         session = DBSession
         name = 'temporary_photos_bucket'
-        unique_indexes = [('created_at',),]
+        unique_indexes = [('created_at',), ]
 
     _id = FieldProperty(s.ObjectId)
     created_at = FieldProperty(s.DateTime, required=True, if_missing=datetime.utcnow)
-    photos = FieldProperty([{'file': s.String(required=True),
-                             'url': s.String(required=True),
-                             'thumb_url': s.String(required=True),
-                             'thumb_local_path': s.String(required=True),
-                             'uuid': s.String(required=True),
-                             'filename': s.String(required=True)}])
+    photos = ForeignIdProperty(BucketProductImage, uselist=True)
+
 
 class UserAddress(MappedClass):
     class __mongometa__:

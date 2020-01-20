@@ -17,7 +17,11 @@
                     </tr>
                     <py:for each="product in products">
                         <tr>
-                            <td><a href="${h.plug_url('stroller2', '/product/%s' % product.slug)}">${product.name[tg.config.lang]}</a></td>
+                            <td>
+                                <a href="${h.plug_url('stroller2', '/product/%s' % product.slug)}">
+                                    ${product.name[tg.config.lang]}
+                                </a>
+                            </td>
                             <td>
                                 <ul>
                                     <li><a href="${h.plug_url('stroller2', '/manage/product/edit',
@@ -29,11 +33,13 @@
                                         onclick="return confirm('Do you really want to delete product?')" title="Delete product">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a></li>
-                                    <li py:if="product.published"><a href="${h.plug_url('stroller2', '/manage/product/publish',
+                                    <li py:if="product.published">
+                                        <a href="${h.plug_url('stroller2', '/manage/product/publish',
                                         params=dict(product_id=product._id))}" title="Hide product">
                                         <span class="text-success glyphicon glyphicon-check"></span>
                                     </a></li>
-                                    <li py:if="not product.published"><a href="${h.plug_url('stroller2', '/manage/product/publish',
+                                    <li py:if="not product.published">
+                                        <a href="${h.plug_url('stroller2', '/manage/product/publish',
                                         params=dict(product_id=product._id))}" title="Publish product">
                                         <span class="text-error glyphicon glyphicon-check"></span>
                                     </a></li>

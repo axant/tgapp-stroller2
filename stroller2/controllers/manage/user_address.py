@@ -45,6 +45,10 @@ class ManageUserAddressesController(TGController):
                 'details': kw.get('details')
             }
         )
+        image = app_model.AvatarImage(
+            image=kw.get('image'),
+            address_id=new_address._id
+        )
         flash(_('User address created'))
         return redirect(plug_url('stroller2', '/manage/address/index'))
 

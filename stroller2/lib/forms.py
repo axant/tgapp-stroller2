@@ -6,8 +6,8 @@ from stroller2.lib.utils import json_lurl
 import tg
 
 from tw2.core import Validator, IntValidator, Deferred
-from tw2.forms import Form, TextField, TextArea, SubmitButton, HiddenField, ListForm, MultipleSelectField, TableForm, \
-    SingleSelectField, ListLayout
+from tw2.forms import Form, TextField, TextArea, SubmitButton, HiddenField, ListForm,\
+    MultipleSelectField, FileField, SingleSelectField, ListLayout
 from tg import app_globals
 from tg.i18n import lazy_ugettext as l_
 
@@ -77,7 +77,8 @@ class NewUserAddressForm(ListForm):
                     container_attrs={'class': 'form-group'})
     details = TextField(label=l_('Details'), validator=Validator(required=True), css_class='form-control',
                     container_attrs={'class': 'form-group'})
-
+    image = FileField(label=l_('Image'),
+                            css_class='form-control', container_attrs={'class': 'form-group', 'accept': 'image/*'})
     submit = SubmitButton(value=l_('Create'), css_class='btn btn-default')
 
 

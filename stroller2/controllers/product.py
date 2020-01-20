@@ -20,9 +20,12 @@ class ProductController(TGController):
         if product is None:
             abort(404, 'Product not found')
 
-        return dict(product=product, buy_form=get_buy_product_form(),
-                    action=plug_url('stroller2', '/product/add_to_cart'),
-                    active=self._product_is_active(product))
+        return dict(
+            product=product,
+            buy_form=get_buy_product_form(),
+            action=plug_url('stroller2', '/product/add_to_cart'),
+            active=self._product_is_active(product)
+        )
 
     @require(not_anonymous())
     @expose()

@@ -7,7 +7,7 @@ This file complements development/deployment.ini.
 """
 from tg import FullStackApplicationConfigurator
 import sampleecommerce
-from sampleecommerce import model, lib
+from sampleecommerce import model
 
 base_config = FullStackApplicationConfigurator()
 
@@ -58,6 +58,8 @@ base_config.update_blueprint({
 })
 # This tells to TurboGears how to retrieve the data for your user
 from tg.configuration.auth import TGAuthMetadata
+
+
 class ApplicationAuthMetadata(TGAuthMetadata):
     def __init__(self, dbsession, user_class):
         self.user_class = user_class

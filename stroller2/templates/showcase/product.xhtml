@@ -5,13 +5,16 @@
             py:with="is_available = product.configurations[0].qty > 0">
             <div class="col-md-3">
                 <a href="${h.stroller2_product_url(product)}">
-                    <div class="stroller-showcase-product-thumbnail-image" style="background-image: url('${product.thumbnail}')"></div>
+                    <div class="stroller-showcase-product-thumbnail-image"
+                         style="background-image: url('${product.thumbnail}')"></div>
                 </a>
             </div>
 
             <div class="col-md-6">
                 <ul class="stroller2-showcase-product-thumbnail-categories">
-                    <li py:for="category in product.categories">${category.name_with_ancestors}</li>
+                    <li py:for="category in product.categories">
+                        ${category.name_with_ancestors}
+                    </li>
                 </ul>
                 <h2>${product.i18n_name}</h2>
                 <h3>€ <b>${'%.2f' % product.configuration_gross_price(product.configurations[0])}</b></h3>

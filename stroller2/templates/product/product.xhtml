@@ -4,7 +4,7 @@
         <title>${product.i18n_name}</title>
         <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/_pluggable/stroller2/css/style.css')}" />
         <meta itemprop="name" content="${product.i18n_name}" />
-        <meta itemprop="image" content="${tg.url(product.details.product_photos[0].url, qualified=True)}" />
+        <meta itemprop="image" content="${tg.url(product.thumbnail, qualified=True)}" />
         <meta itemprop="description" content="${product.i18n_description}" />
         <meta name="description" content="${product.description.get('en', product.description.get('it'))}" />
         <meta property="og:title" content="${product.i18n_name}" />
@@ -21,9 +21,11 @@
                 <div class="row">
                     <div class="col-md-4"
                         py:with="photos=product.details.product_photos">
-                        <div id="product-photos-carousel" class="carousel slide" data-ride="carousel">
+                        <div id="product-photos-carousel" class="carousel slide"
+                             data-ride="carousel">
                             <ol class="carousel-indicators">
-                                <li data-target="#product-photos-carousel" data-slide-to="${idx}"
+                                <li data-target="#product-photos-carousel"
+                                    data-slide-to="${idx}"
                                     class="${'active' if idx==0 else ''}"
                                     py:for="idx, photo in enumerate(photos)">
                                 </li>
@@ -45,19 +47,24 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <ul class="stroller2-showcase-product-thumbnail-categories">
-                                    <li py:for="category in product.categories">${category.name_with_ancestors}</li>
+                                    <li py:for="category in product.categories">
+                                        ${category.name_with_ancestors}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-4">
                                 <div id="stroller2-product-social-buttons">
-                                    <a  id="product-social-button-facebook" class="stroller2-product-social-button"
+                                    <a  id="product-social-button-facebook"
+                                        class="stroller2-product-social-button"
                                         onclick="Share.facebook('${h.stroller2_product_share_url(product)}')">
                                     </a>
-                                    <a id="product-social-button-gplus" class="stroller2-product-social-button"
-                                    onclick="Share.gplus('${h.stroller2_product_share_url(product)}')">
+                                    <a id="product-social-button-gplus"
+                                       class="stroller2-product-social-button"
+                                        onclick="Share.gplus('${h.stroller2_product_share_url(product)}')">
                                     </a>
-                                    <a id="product-social-button-twitter" class="stroller2-product-social-button"
-                                    onclick="Share.twitter('${h.stroller2_product_share_url(product)}', '${product.i18n_name}')">
+                                    <a id="product-social-button-twitter"
+                                       class="stroller2-product-social-button"
+                                       onclick="Share.twitter('${h.stroller2_product_share_url(product)}', '${product.i18n_name}')">
                                     </a>
                                 </div>
                             </div>
