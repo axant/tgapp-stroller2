@@ -14,7 +14,8 @@
     <meta property="og:title" content="${product.i18n_name}" />
     <meta property="og:type" content="product" />
     <meta property="og:url" content="${h.stroller2_product_share_url(product)}" />
-    <meta py:for="photo in product.details.product_photos" property="og:image" content="${tg.url(photo.url, qualified=True)}" />
+    <meta py:for="photo in product.details.product_photos" property="og:image"
+          content="${tg.url(h.get_image_url(photo), qualified=True)}"  />
     <meta property="og:description" content="${product.i18n_description}" />
 </head>
 

@@ -1,6 +1,6 @@
 # coding=utf-8
 from __future__ import unicode_literals
-from axf.widgets.ajax_manage_photos import AjaxManagePhotos
+from .widget import AjaxManagePhotos
 from formencode.validators import Number
 from stroller2.lib.utils import json_lurl
 import tg

@@ -44,9 +44,8 @@ class ManageProductController(TGController):
     def create(self, **kw):
         kw['type'] = 'product'
         bucket = self.photos.get_bucket()
-        if 'product_photos' in kw.keys():
-            kw['product_photos'] = bucket.photos
-            del kw['photos']
+        if 'photos' in kw.keys():
+            kw['photos'] = bucket.photos
         try:
             app_globals.shop.product.create(**kw)
             flash(_('Product created'))

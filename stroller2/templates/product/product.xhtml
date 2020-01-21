@@ -10,7 +10,8 @@
         <meta property="og:title" content="${product.i18n_name}" />
         <meta property="og:type" content="product" />
         <meta property="og:url" content="${h.stroller2_product_share_url(product)}" />
-        <meta py:for="photo in product.details.product_photos" property="og:image" content="${tg.url(photo.url, qualified=True)}" />
+        <meta py:for="photo in product.details.photos" property="og:image"
+              content="${tg.url(h.get_image_url(photo), qualified=True)}" />
         <meta property="og:description" content="${product.i18n_description}" />
     </head>
 
@@ -20,7 +21,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4"
-                        py:with="photos=product.details.product_photos">
+                        py:with="photos=product.details.photos">
                         <div id="product-photos-carousel" class="carousel slide"
                              data-ride="carousel">
                             <ol class="carousel-indicators">
@@ -34,7 +35,7 @@
                             <div class="carousel-inner">
                                 <div class="item ${'active' if idx==0 else ''}"
                                     py:for="idx, photo in enumerate(photos)">
-                                    <div py:with="photo_url=tg.url(photo['url'])"
+                                    <div py:with="photo_url=tg.url(h.get_image_url(photo))"
                                         class="stroller2-product-photo"
                                         style="background-image: url('${photo_url}')">
                                     </div>
@@ -79,7 +80,7 @@
                             <p>${product.i18n_description}</p>
                         </div>
                         <div py:if="active" class="col-md-6">
-                            ${buy_form.display(value=dict(product=product._id), action=action)}
+                            ${buy_form.display(value=dict(product=str(product._id)), action=action)}
                         </div>
                         <div py:if="not active" class="col-md-6">
                             <h4>Sold out</h4>
