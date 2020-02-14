@@ -29,13 +29,15 @@ class ManageProductController(TGController):
 
     @expose('stroller2.templates.manage.product.new')
     def new(self, **kw):
+        form = get_new_product_form()
         if request.validation.exception is not None:
             fields = request.validation.exception.widget.child.children
             fields.photos.value = {'photos': self.photos.current_photos()}
+            form = request.validation.exception.widget
         else:
             self.photos.new_bucket()
         return dict(
-            form=get_new_product_form(),
+            form=form,
             action=plug_url('stroller2', '/manage/product/create')
         )
 
@@ -59,18 +61,21 @@ class ManageProductController(TGController):
     @expose('stroller2.templates.manage.product.edit')
     @validate({'product_id': ProductValidator()}, error_handler=fail_with(404))
     def edit(self, product_id, **kw):
+        form = get_edit_product_form()
+        product = product_id
+        photos = []
         validation_error = request.validation.exception
         if validation_error is not None:
             fields = validation_error.widget.child.children
             fields.photos.value = {'photos': self.photos.current_photos()}
-            value = {}
+            form = validation_error.widget
+            value = kw
         else:
             self.photos.new_bucket()
-            product = product_id
-            photos = []
             try:
-                photos = self.photos.recover_photos(product.details.product_photos)
+                photos = self.photos.recover_photos(product.details.photos)
             except AttributeError as ex:
+                print(ex)
                 pass
             value = dict(
                 product_id=product._id, name=product.name[tg.config.lang],
@@ -87,7 +92,7 @@ class ManageProductController(TGController):
                 }
             )
         return dict(
-            form=get_edit_product_form(),
+            form=form,
             value=value,
             action=plug_url('stroller2', '/manage/product/save')
         )
@@ -97,11 +102,10 @@ class ManageProductController(TGController):
     def save(self, **kw):
         product = app_globals.shop.product.get(_id=kw.pop('product_id'))
         bucket = self.photos.get_bucket()
-        kw['product_photos'] = bucket.photos
+        kw['photos'] = bucket.photos
         product_info = dict(name=kw.pop('name'), description=kw.pop('description'), weight=kw.pop('weight'),
                             categories_ids=kw.pop('categories_ids'),
-                            product_photos=kw.pop('product_photos'))
-        del kw['photos']
+                            photos=kw.pop('photos'))
         app_globals.shop.product.edit(product, **product_info)
         app_globals.shop.product.edit_configuration(product, 0, **kw)
         flash(_('Product edited'))

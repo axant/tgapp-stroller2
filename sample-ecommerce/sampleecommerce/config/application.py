@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """WSGI application initialization for sample-ecommerce."""
 from sampleecommerce.config.app_cfg import base_config
+from depot.manager import DepotManager
 
 __all__ = ['make_app']
 
@@ -24,5 +25,9 @@ def make_app(global_conf, **app_conf):
     app = base_config.make_wsgi_app(global_conf, app_conf, wrap_app=None)
 
     # Wrap your final TurboGears 2 application with custom middleware here
+
+    # The following line is needed because during tests we create multiple apps and DEPOT can only have a single middleware.
+    DepotManager._middleware = None
+    app = DepotManager.make_middleware(app)
 
     return app

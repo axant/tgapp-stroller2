@@ -85,5 +85,4 @@ def enable_depot(app):
         log.info('Configuring Storage %s*', prefix)
         DepotManager.configure(storage, tg.config, prefix)
         DepotManager.alias(storages[storage], storage)
-        DepotManager.make_middleware(app=app)
     return app

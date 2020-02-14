@@ -5,6 +5,10 @@ ul {
     margin: 0;
 }
 
+ul li span.error {
+    color: red;
+}
+
 .stroller2-stretch {
     width: 100%;
     display: inline-block;

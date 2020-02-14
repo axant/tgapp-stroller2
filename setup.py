@@ -15,7 +15,8 @@ install_requires=[
     "tw2.forms",
     "tgext.ecommerce",
     "axf",
-    "tgext.datahelpers"
+    "tgext.datahelpers",
+    "filedepot",
 ]
 
 here = os.path.abspath(os.path.dirname(__file__))

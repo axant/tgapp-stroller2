@@ -1,5 +1,5 @@
 from stroller2.lib.ractive import RactiveWidget
-from tw2.core import Param, JSLink
+from tw2.core import Param
 
 
 class AjaxManagePhotos(RactiveWidget):
@@ -7,7 +7,6 @@ class AjaxManagePhotos(RactiveWidget):
     delete_action = Param('Url used to delete uploaded photos', request_local=False)
     permit_upload = Param('Whenever to enable upoad of new photos or only replace existing', request_local=False,
                           default=True)
-    resources = [JSLink(modname=__name__, filename='resources/formdata.js')]
     ractive_params = ['action', 'delete_action', 'permit_upload', 'css_class', 'id']
 
     ractive_template = '''
@@ -41,9 +40,10 @@ function(options) {
     this.on({
       request_delete: function(click_evt) {
         var self = this;
-
         var xhr = new XMLHttpRequest();
-        xhr.open('DELETE', makeURLWithParameter(self.get('delete_action'), "uid", click_evt.context.uid), true);
+        var data = new FormData();
+        data.append('uid', click_evt.context.uid);
+        xhr.open('DELETE', self.get('delete_action'), true);
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 
@@ -52,7 +52,7 @@ function(options) {
             self.set('photos', result.photos);
         }
 
-        xhr.send();
+        xhr.send(data);
       },
       request_upload: function(click_evt) {
 

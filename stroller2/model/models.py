@@ -41,6 +41,7 @@ class TemporaryPhotosBucket(MappedClass):
     _id = FieldProperty(s.ObjectId)
     created_at = FieldProperty(s.DateTime, required=True, if_missing=datetime.utcnow)
     photos = ForeignIdProperty(BucketProductImage, uselist=True)
+    photos_rel = RelationProperty('BucketProductImage')
 
 
 class UserAddress(MappedClass):
